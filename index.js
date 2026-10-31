@@ -1,18 +1,14 @@
 import e from "express";
 import connectDb from "./config/db.js";
 import Router from "./route/todoRoute.js";
-// import cors from 'cors';
+import userRoute from "./route/userRoute.js";
 
 const app = e();
 app.use(e.json());
 
-app.use("/api/v1", Router)
-// app.use(cors());
-// app.use(express.json())
+app.use("/api/v1/todos", Router);
+app.use("/api/v1/user", userRoute);
 
-// app.get("/", (req,res)=>{
-//     res.send("Todo Api is running")
-// })
 
 app.listen(8000, async()=>{
     await connectDb();
