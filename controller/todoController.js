@@ -103,24 +103,24 @@ export const getTodo = async (req, res) => {
 
 //Delete todo
 
-export const deleteTodo = async (req, res) => {
-    try {
-        const deleteTodo = await todo.findByIdAndDelete(req.params.id);
-        if (!deleteTodo) {
-            return res.status(404).json({
-                message: "Todo not found"
-            });
-        }
+// export const deleteTodo = async (req, res) => {
+//     try {
+//         const deleteTodo = await todo.findByIdAndDelete(req.params.id);
+//         if (!deleteTodo) {
+//             return res.status(404).json({
+//                 message: "Todo not found"
+//             });
+//         }
 
-        return res.status(200).json({
-            message: "Todo Delete Successfully",
-            data: deleteTodo,
-        });
-    }
-    catch (e) {
-        return res.status(500).json({
-            message: "failed delete todo",
-            error: e.message,
-        });
-    }
-}
+//         return res.status(200).json({
+//             message: "Todo Delete Successfully",
+//             data: deleteTodo,
+//         });
+//     }
+//     catch (e) {
+//         return res.status(500).json({
+//             message: "failed delete todo",
+//             error: e.message,
+//         });
+//     }
+// }
