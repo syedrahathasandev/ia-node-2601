@@ -124,3 +124,7 @@ export const deleteTodo = async (req, res) => {
         });
     }
 }
+
+//Get Todo by ID 
+
+export const getTodos = async
