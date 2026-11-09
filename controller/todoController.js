@@ -132,7 +132,7 @@ export const getTodoById = async (req, res) => {
 
     }catch (e) {
         return res.status(500).json({
-            success 
+            success: false 
             message: "Internal Server Error",
             error: e.message,
         });
