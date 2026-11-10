@@ -127,14 +127,16 @@ export const deleteTodo = async (req, res) => {
 
 //Get Todo by ID 
 
-export const getTodoById = async (req, res) => {
-    try{
+// export const getTodoById = async (req, res) => {
+//     try {
 
-    }catch (e) {
-        return res.status(500).json({
-            success: false 
-            message: "Internal Server Error",
-            error: e.message,
-        });
-    }
-}
+
+
+//     } catch (e) {
+//         return res.status(500).json({
+//             success: false,
+//             message: "Internal Server Error",
+//             error: e.message,
+//         });
+//     }
+// }
