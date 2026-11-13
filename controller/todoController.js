@@ -1,4 +1,5 @@
 import todo from "../models/Todo.js";
+import mongoose from "mongoose";
 
 // Create todo
 
@@ -129,8 +130,15 @@ export const deleteTodo = async (req, res) => {
 
 export const getTodoById = async (req, res) => {
     try {
+        const { id } = req.params;
 
-
+        //Validate ID based on mongoose
+        if(!mongoose.Types.ObjectId.isValid(id)){
+            return res.status(400).json({
+                success: false,
+                message: "Invalid Todo ID",
+            });
+        }
 
     } catch (e) {
         return res.status(500).json({
