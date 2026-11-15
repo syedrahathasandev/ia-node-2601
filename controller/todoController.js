@@ -126,7 +126,7 @@ export const deleteTodo = async (req, res) => {
     }
 }
 
-//Get Todo by ID 
+//Get Todo by ID  - get API
 
 export const getTodoById = async (req, res) => {
     try {
@@ -139,6 +139,23 @@ export const getTodoById = async (req, res) => {
                 message: "Invalid Todo ID",
             });
         }
+
+        const todo = await Todo.findById(id);
+
+        //If todo not found
+        if(!todo){
+            return res.status(404).json({
+                success: false,
+                message: "Todo not found"
+            });
+        }
+
+        //If todo found
+        return res.status(200).json({
+            success: true,
+            message:"Todo fetched successfully",
+            data: todo,
+        })
 
     } catch (e) {
         return res.status(500).json({
