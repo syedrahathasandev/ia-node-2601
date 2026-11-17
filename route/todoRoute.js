@@ -1,16 +1,16 @@
-import e from "express";
-import { createTodo, getTodo, updateTodo , deleteTodo , getTodoById } from "../controller/todoController.js";
+// import e from "express";
+// import { createTodo, getTodo, updateTodo , deleteTodo , getTodoById } from "../controller/todoController.js";
 
-const Router = e.Router();
+// const Router = e.Router();
 
-Router.post("/todos/create", createTodo);
+// Router.post("/todos/create", createTodo);
 
-Router.get('/todos/get', getTodo);
+// Router.get('/todos/get', getTodo);
 
-Router.put('/todos/put/:id', updateTodo);
+// Router.put('/todos/put/:id', updateTodo);
 
-Router.delete('/todos/delete/:id', deleteTodo);
+// Router.delete('/todos/delete/:id', deleteTodo);
 
-Router.get('/todos/:id', getTodoById);
+// Router.get('/todos/:id', getTodoById);
 
-export default Router
+// export default Router
