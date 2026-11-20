@@ -157,11 +157,11 @@ export const getTodoById = async (req, res) => {
             data: todo,
         })
 
-//     } catch (e) {
-//         return res.status(500).json({
-//             success: false,
-//             message: "Internal Server Error",
-//             error: e.message,
-//         });
-//     }
-// }
+    } catch (e) {
+        return res.status(500).json({
+            success: false,
+            message: "Internal Server Error",
+            error: e.message,
+        });
+    }
+}
