@@ -133,7 +133,7 @@ export const getTodoById = async (req, res) => {
         const { id } = req.params;
 
         //Validate ID based on mongoose
-        if(!mongoose.Types.ObjectId.isValid(id)){
+        if (!mongoose.Types.ObjectId.isValid(id)) {
             return res.status(400).json({
                 success: false,
                 message: "Invalid Todo ID",
@@ -143,7 +143,7 @@ export const getTodoById = async (req, res) => {
         const todo = await Todo.findById(id);
 
         //If todo not found
-        if(!todo){
+        if (!todo) {
             return res.status(404).json({
                 success: false,
                 message: "Todo not found"
@@ -153,7 +153,7 @@ export const getTodoById = async (req, res) => {
         //If todo found
         return res.status(200).json({
             success: true,
-            message:"Todo fetched successfully",
+            message: "Todo fetched successfully",
             data: todo,
         })
 
@@ -165,3 +165,44 @@ export const getTodoById = async (req, res) => {
         });
     }
 }
+
+
+//Upadte Todo by ID- PUT API
+
+export const updateTodo = async (req, res) => {
+
+    try {
+        const { id } = req.params;
+        const { title, description } = req.body;
+
+          //Validate ID based on mongoose
+        if (!mongoose.Types.ObjectId.isValid(id)) {
+            return res.status(400).json({
+                success: false,
+                message: "Invalid Todo ID",
+            });
+        }
+
+        //valid input
+            if ( title || title.trim() ===""){
+                return res.status(400).json({
+                    success: false,
+                    message: "Title is required",
+                });
+            }
+
+            //udpate todo
+            const todo = await Todo.findByIdAndUpdate(
+                id,
+                { title, description },
+                {new: true, runValidators: true} // to return the update document
+            );
+
+    } catch (error) {
+        return res.status(500).json({
+            success: false,
+            message: "Internal Server Error",
+            error: e.message,
+        });
+    }
+};
