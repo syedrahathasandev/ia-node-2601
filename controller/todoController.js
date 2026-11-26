@@ -171,38 +171,38 @@ export const getTodoById = async (req, res) => {
 
 export const updateTodo = async (req, res) => {
 
-//     try {
-//         const { id } = req.params;
-//         const { title, description } = req.body;
+    try {
+        const { id } = req.params;
+        const { title, description } = req.body;
 
-//           //Validate ID based on mongoose
-//         if (!mongoose.Types.ObjectId.isValid(id)) {
-//             return res.status(400).json({
-//                 success: false,
-//                 message: "Invalid Todo ID",
-//             });
-//         }
+          //Validate ID based on mongoose
+        if (!mongoose.Types.ObjectId.isValid(id)) {
+            return res.status(400).json({
+                success: false,
+                message: "Invalid Todo ID",
+            });
+        }
 
-//         //valid input
-//             if ( title || title.trim() ===""){
-//                 return res.status(400).json({
-//                     success: false,
-//                     message: "Title is required",
-//                 });
-//             }
+        //valid input
+            if ( title || title.trim() ===""){
+                return res.status(400).json({
+                    success: false,
+                    message: "Title is required",
+                });
+            }
 
-//             //udpate todo
-//             const todo = await Todo.findByIdAndUpdate(
-//                 id,
-//                 { title, description },
-//                 {new: true, runValidators: true} // to return the update document
-//             );
+            //udpate todo
+            const todo = await Todo.findByIdAndUpdate(
+                id,
+                { title, description },
+                {new: true, runValidators: true} // to return the update document
+            );
 
-//     } catch (error) {
-//         return res.status(500).json({
-//             success: false,
-//             message: "Internal Server Error",
-//             error: e.message,
-//         });
-//     }
-// };
+    } catch (error) {
+        return res.status(500).json({
+            success: false,
+            message: "Internal Server Error",
+            error: e.message,
+        });
+    }
+};
