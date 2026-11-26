@@ -175,7 +175,7 @@ export const updateTodo = async (req, res) => {
         const { id } = req.params;
         const { title, description } = req.body;
 
-          //Validate ID based on mongoose
+        //Validate ID based on mongoose
         if (!mongoose.Types.ObjectId.isValid(id)) {
             return res.status(400).json({
                 success: false,
@@ -184,19 +184,19 @@ export const updateTodo = async (req, res) => {
         }
 
         //valid input
-            if ( title || title.trim() ===""){
-                return res.status(400).json({
-                    success: false,
-                    message: "Title is required",
-                });
-            }
+        if (title || title.trim() === "") {
+            return res.status(400).json({
+                success: false,
+                message: "Title is required",
+            });
+        }
 
-            //udpate todo
-            const todo = await Todo.findByIdAndUpdate(
-                id,
-                { title, description },
-                {new: true, runValidators: true} // to return the update document
-            );
+        //udpate todo
+        const todo = await Todo.findByIdAndUpdate(
+            id,
+            { title, description },
+            { new: true, runValidators: true } // to return the update document
+        );
 
     } catch (error) {
         return res.status(500).json({
@@ -204,5 +204,20 @@ export const updateTodo = async (req, res) => {
             message: "Internal Server Error",
             error: e.message,
         });
+    }
+};
+
+//TOGGLE TODO by ID- PATCH API
+
+export const toggleTodo = async (req, res) => {
+    try {
+        const { id } = req.params;
+
+    } catch (error) {
+        return res.status(500).json({
+            success: false,
+            message: "Internal Server Error",
+            error: error.message,
+        })
     }
 };
